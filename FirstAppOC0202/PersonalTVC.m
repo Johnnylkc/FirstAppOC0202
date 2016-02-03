@@ -1,71 +1,46 @@
 //
-//  MainTVC.m
+//  PersonalTVC.m
 //  FirstAppOC0202
 //
-//  Created by 劉坤昶 on 2016/2/2.
+//  Created by 劉坤昶 on 2016/2/4.
 //  Copyright © 2016年 劉坤昶 Johnny. All rights reserved.
 //
 
-#import "MainTVC.h"
-#import "MainCell.h"
+#import "PersonalTVC.h"
+#import "PersonalCell.h"
 
-#import "LandingVC.h"
+@interface PersonalTVC ()
 
-#import "Backendless.h"
-
-@interface MainTVC ()
-
-@property(strong,nonatomic)UIView *welcomeView;
+@property(strong,nonatomic)UIView *headerView;
+@property(strong,nonatomic)UIImageView *backImage;
 
 @end
 
-@implementation MainTVC
+@implementation PersonalTVC
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[MainCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[PersonalCell class] forCellReuseIdentifier:@"cell"];
     
-    UIBarButtonItem *logout = [[UIBarButtonItem alloc] initWithTitle:@"shit" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    [self allUI];
     
-    self.navigationItem.rightBarButtonItem = logout;
-    
-    
-
 }
 
--(void)logout:(id)logout
+-(void)allUI
 {
-    Responder *responder = [Responder responder:self
-                             selResponseHandler:@selector(responseHandler:)
-                                selErrorHandler:@selector(errorHandler:)];
-    [backendless.userService logout:responder];
+    ////headerView
+    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
+    self.headerView.backgroundColor = [UIColor redColor];
+    self.tableView.tableHeaderView = self.headerView;
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:@"NO" forKey:@"loggedIn"];
-    [userDefault synchronize];
-    
-    NSLog(@"我想登出了 我累了");
-    
-    
-    
+    self.backImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back"]];
+    self.backImage.frame = CGRectMake(0, 0, self.view.frame.size.width, 200);
+    [self.headerView addSubview:self.backImage];
     
 }
 
--(id)responseHandler:(id)responder
-{
-    NSLog(@"成功登出");
-    LandingVC *controller = [LandingVC new];
-    [self presentViewController:controller animated:YES completion:nil];
-    return responder;
-}
-
-
--(void)errorHandler:(Fault *)fault
-{
-    NSLog(@"想登出？！ 登出失敗喔%@ <%@>", fault.message, fault.detail);
-}
 
 
 - (void)didReceiveMemoryWarning {
@@ -86,11 +61,15 @@
 }
 
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MainCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    PersonalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"ggg";
+    
+    
+    
     
     return cell;
 }

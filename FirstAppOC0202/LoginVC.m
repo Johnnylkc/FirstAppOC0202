@@ -8,6 +8,7 @@
 
 #import "LoginVC.h"
 #import "MainTVC.h"
+#import "PersonalTVC.h"
 
 #import "Backendless.h"
 
@@ -73,30 +74,72 @@
                                 selErrorHandler:@selector(errorHandler:)];
     [backendless.userService login:self.emailTextField.text password:self.passwordTextField.text responder:responder];
     
-    MainTVC *controller = [MainTVC new];
-    UINavigationController *controllerNav = [[UINavigationController alloc] initWithRootViewController:controller];
     
-    self.tabBarIcon = [UIImage imageNamed:@"001"];
-    self.selectedIcon = [UIImage imageNamed:@"001"];
-    controller.tabBarItem =
-    [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
-    
-    NSArray *controllers = [[NSArray alloc] initWithObjects:controllerNav, nil];
-    self.tabBarController = [UITabBarController new];
-    self.tabBarController.viewControllers = controllers;
-    self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    
-    
-    
-    [self presentViewController:self.tabBarController animated:YES completion:nil];
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    [userDefault setObject:@"YES" forKey:@"loggedIn"];
+//    [userDefault synchronize];
+//    
+//    
+//    MainTVC *onePage = [MainTVC new];
+//    UINavigationController *onePageNav = [[UINavigationController alloc] initWithRootViewController:onePage];
+//    self.tabBarIcon = [UIImage imageNamed:@"001"];
+//    self.selectedIcon = [UIImage imageNamed:@"001"];
+//    onePage.tabBarItem =
+//    [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
+//    
+//    PersonalTVC *twoPage = [PersonalTVC new];
+//    UINavigationController *twoPageNav = [[UINavigationController alloc] initWithRootViewController:twoPage];
+//    self.tabBarIcon = [UIImage imageNamed:@"002"];
+//    self.selectedIcon = [UIImage imageNamed:@"002"];
+//    twoPage.tabBarItem =
+//    [[UITabBarItem alloc] initWithTitle:@"個人檔案" image:self.tabBarIcon selectedImage:self.selectedIcon];
+//    
+//    
+//    NSArray *controllers = [[NSArray alloc] initWithObjects:onePageNav,twoPageNav, nil];
+//    self.tabBarController = [UITabBarController new];
+//    self.tabBarController.viewControllers = controllers;
+//    self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    
+//    [self presentViewController:self.tabBarController animated:YES completion:nil];
     
 }
 
--(void)responseHandler:(Responder*)responder
+-(id)responseHandler:(Responder*)responder
 {
     BackendlessUser *user = (BackendlessUser*)responder;
     NSLog(@"成功登入%@",user);
+    
+    [backendless.userService setStayLoggedIn:YES];
+    
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        [userDefault setObject:@"YES" forKey:@"loggedIn"];
+        [userDefault synchronize];
+    
+    
+        MainTVC *onePage = [MainTVC new];
+        UINavigationController *onePageNav = [[UINavigationController alloc] initWithRootViewController:onePage];
+        self.tabBarIcon = [UIImage imageNamed:@"001"];
+        self.selectedIcon = [UIImage imageNamed:@"001"];
+        onePage.tabBarItem =
+        [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
+    
+        PersonalTVC *twoPage = [PersonalTVC new];
+        UINavigationController *twoPageNav = [[UINavigationController alloc] initWithRootViewController:twoPage];
+        self.tabBarIcon = [UIImage imageNamed:@"002"];
+        self.selectedIcon = [UIImage imageNamed:@"002"];
+        twoPage.tabBarItem =
+        [[UITabBarItem alloc] initWithTitle:@"個人檔案" image:self.tabBarIcon selectedImage:self.selectedIcon];
+    
+    
+        NSArray *controllers = [[NSArray alloc] initWithObjects:onePageNav,twoPageNav, nil];
+        self.tabBarController = [UITabBarController new];
+        self.tabBarController.viewControllers = controllers;
+        self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
+        [self presentViewController:self.tabBarController animated:YES completion:nil];
+    
+    
+    return responder;
 }
 
 -(void)errorHandler:(Fault*)fault

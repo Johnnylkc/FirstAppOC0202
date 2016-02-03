@@ -9,10 +9,15 @@
 #import "AppDelegate.h"
 #import "LandingVC.h"
 #import "MainTVC.h"
+#import "PersonalTVC.h"
 
 #import "Backendless.h"
 
 @interface AppDelegate ()
+
+@property(strong,nonatomic)UITabBarController *tabBarController;
+@property(strong,nonatomic)UIImage *tabBarIcon;
+@property(strong,nonatomic)UIImage *selectedIcon;
 
 
 @end
@@ -28,20 +33,38 @@
     
     if ([logOrNot isEqualToString:@"YES"] )
     {
-    
-        MainTVC *controller = [MainTVC new];
+        
+        MainTVC *onePage = [MainTVC new];
+        UINavigationController *onePageNav = [[UINavigationController alloc] initWithRootViewController:onePage];
+        self.tabBarIcon = [UIImage imageNamed:@"001"];
+        self.selectedIcon = [UIImage imageNamed:@"001"];
+        onePage.tabBarItem =
+        [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
+        
+        PersonalTVC *twoPage = [PersonalTVC new];
+        UINavigationController *twoPageNav = [[UINavigationController alloc] initWithRootViewController:twoPage];
+        self.tabBarIcon = [UIImage imageNamed:@"002"];
+        self.selectedIcon = [UIImage imageNamed:@"002"];
+        twoPage.tabBarItem =
+        [[UITabBarItem alloc] initWithTitle:@"個人檔案" image:self.tabBarIcon selectedImage:self.selectedIcon];
+        
+        NSArray *controllers = [[NSArray alloc] initWithObjects:onePageNav,twoPageNav, nil];
+        self.tabBarController = [UITabBarController new];
+        self.tabBarController.viewControllers = controllers;
+        self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        UINavigationController *controllerNav =
-        [[UINavigationController alloc] initWithRootViewController:controller];
-        self.window.rootViewController = controllerNav;
+        self.window.rootViewController = self.tabBarController;
         [self.window makeKeyAndVisible];
         
         [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800"
                       secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00"
                      version:@"v1"];
+   
     }
     else if([logOrNot isEqualToString:@"NO"])
     {
+       
         LandingVC *controller = [LandingVC new];
         UINavigationController *controllerNav =
         [[UINavigationController alloc] initWithRootViewController:controller];
