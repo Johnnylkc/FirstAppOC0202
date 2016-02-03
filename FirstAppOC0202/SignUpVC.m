@@ -7,6 +7,7 @@
 //
 
 #import "SignUpVC.h"
+#import "LoginVC.h"
 #import "MainTVC.h"
 
 #import "Backendless.h"
@@ -69,23 +70,41 @@
 
 -(void)signUp:(UIButton*)signUpButton
 {
-    NSLog(@"%@ %@ %@" , self.emailTextField.text,self.passwordTextField.text,self.userNameTextField.text);
     
     BackendlessUser *user = [BackendlessUser new];
     user.email = self.emailTextField.text;
     user.password = self.passwordTextField.text;
     user.name = self.userNameTextField.text;
-    [backendless.userService registering:user];
     
-    MainTVC *controller = [MainTVC new];
-    UINavigationController *controllerNav = [[UINavigationController alloc] initWithRootViewController:controller];
+    Responder *responder = [Responder responder:self selResponseHandler:@selector(responderHandler:) selErrorHandler:@selector(errorHandler:)];
+    
+    [backendless.userService registering:user responder:responder];
+
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.emailTextField.text forKey:@"userEmail"];
+    [defaults setObject:self.passwordTextField.text forKey:@"userPassword"];
+    [defaults setObject:self.userNameTextField.text forKey:@"userName"];
+    [defaults synchronize];
+        
+    LoginVC *controller = [LoginVC new];
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:controllerNav animated:YES completion:nil];
+    [self presentViewController:controller animated:YES completion:nil];
     
 }
 
+-(void)responderHandler:(id)responder
+{
+    BackendlessUser *user = (BackendlessUser*)responder;
+    NSLog(@"%@",user);
+   
+}
 
+-(void)errorHandler:(Fault*)fault
+{
+    NSLog(@"FAULT = %@ <%@>", fault.message, fault.detail);
 
+}
 
 
 

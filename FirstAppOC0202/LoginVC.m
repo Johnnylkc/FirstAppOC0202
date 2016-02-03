@@ -11,6 +11,8 @@
 
 #import "Backendless.h"
 
+
+
 @interface LoginVC ()
 
 @property(strong,nonatomic)UITextField *emailTextField;
@@ -55,7 +57,9 @@
     [self.loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.loginButton];
     
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.emailTextField.text = [defaults objectForKey:@"userEmail"];
+    self.passwordTextField.text = [defaults objectForKey:@"userPassword"];
     
 }
 
@@ -78,7 +82,6 @@
                                 selErrorHandler:@selector(errorHandler:)];
     [backendless.userService login:self.emailTextField.text password:self.passwordTextField.text responder:responder];
     
-
 }
 
 
