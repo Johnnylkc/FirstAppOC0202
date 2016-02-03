@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "LandingVC.h"
+
+#import "Backendless.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +18,18 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+
+    LandingVC *onePage = [LandingVC new];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = onePage;
+    [self.window makeKeyAndVisible];
+    
+    [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800" secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00" version:@"v1"];
+    
+    
     return YES;
 }
 
