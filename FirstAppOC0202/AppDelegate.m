@@ -8,10 +8,13 @@
 
 #import "AppDelegate.h"
 #import "LandingVC.h"
+#import "MainTVC.h"
 
 #import "Backendless.h"
 
 @interface AppDelegate ()
+
+@property (readonly) BOOL isStayLoggedIn;
 
 @end
 
@@ -21,13 +24,36 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    LandingVC *onePage = [LandingVC new];
+    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"userEmail"])
+    {
+        LandingVC *onePage = [LandingVC new];
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.window.rootViewController = onePage;
+        [self.window makeKeyAndVisible];
+        
+        [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800"
+                      secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00"
+                     version:@"v1"];
+        
+    }
+    else
+    {
+        MainTVC *controller = [MainTVC new];
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        UINavigationController *controllerNav =
+        [[UINavigationController alloc] initWithRootViewController:controller];
+        self.window.rootViewController = controllerNav;
+        [self.window makeKeyAndVisible];
+        
+        [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800"
+                      secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00"
+                     version:@"v1"];
+        
+        
+    }
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = onePage;
-    [self.window makeKeyAndVisible];
     
-    [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800" secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00" version:@"v1"];
+    
     
     
     return YES;
@@ -43,7 +69,8 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 

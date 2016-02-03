@@ -7,7 +7,6 @@
 //
 
 #import "SignUpVC.h"
-#import "LoginVC.h"
 #import "MainTVC.h"
 
 #import "Backendless.h"
@@ -76,10 +75,11 @@
     user.password = self.passwordTextField.text;
     user.name = self.userNameTextField.text;
     
-    Responder *responder = [Responder responder:self selResponseHandler:@selector(responderHandler:) selErrorHandler:@selector(errorHandler:)];
+    Responder *signUpResponder = [Responder responder:self selResponseHandler:@selector(responderHandler:) selErrorHandler:@selector(errorHandler:)];
     
-    [backendless.userService registering:user responder:responder];
-
+    [backendless.userService registering:user responder:signUpResponder];
+    
+    [backendless.userService setStayLoggedIn:YES];////////////
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.emailTextField.text forKey:@"userEmail"];
@@ -87,7 +87,7 @@
     [defaults setObject:self.userNameTextField.text forKey:@"userName"];
     [defaults synchronize];
         
-    LoginVC *controller = [LoginVC new];
+    MainTVC *controller = [MainTVC new];
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:controller animated:YES completion:nil];
     
@@ -96,14 +96,13 @@
 -(void)responderHandler:(id)responder
 {
     BackendlessUser *user = (BackendlessUser*)responder;
-    NSLog(@"%@",user);
+    NSLog(@"註冊成功%@",user);
    
 }
 
 -(void)errorHandler:(Fault*)fault
 {
-    NSLog(@"FAULT = %@ <%@>", fault.message, fault.detail);
-
+    NSLog(@"註冊失敗%@ , %@", fault.message, fault.detail);
 }
 
 

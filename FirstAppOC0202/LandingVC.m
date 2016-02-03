@@ -10,20 +10,38 @@
 
 #import "SignUpVC.h"
 #import "LoginVC.h"
+#import "MainTVC.h"
+
+#import "Backendless.h"
 
 @interface LandingVC ()
 
 @property(strong,nonatomic)UIButton *signUpButton;
 @property(strong,nonatomic)UIButton *logInButton;
 
+
 @end
 
 @implementation LandingVC
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+ 
+   
+
+    
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+  
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
 
     [self allUI];

@@ -65,8 +65,13 @@
 
 -(void)login:(UIButton*)loginButton
 {
+    Responder *responder = [Responder responder:self
+                             selResponseHandler:@selector(responseHandler:)
+                                selErrorHandler:@selector(errorHandler:)];
+    [backendless.userService login:self.emailTextField.text password:self.passwordTextField.text responder:responder];
+
+    [backendless.userService setStayLoggedIn:YES];////////////////
     
-    [self userLogin];
     
     MainTVC *controller = [MainTVC new];
     UINavigationController *controllerNav = [[UINavigationController alloc] initWithRootViewController:controller];
@@ -75,14 +80,18 @@
     
 }
 
--(void)userLogin
+-(void)responseHandler:(Responder*)responder
 {
-    Responder *responder = [Responder responder:self
-                             selResponseHandler:@selector(responseHandler:)
-                                selErrorHandler:@selector(errorHandler:)];
-    [backendless.userService login:self.emailTextField.text password:self.passwordTextField.text responder:responder];
-    
+    BackendlessUser *user = (BackendlessUser*)responder;
+    NSLog(@"成功登入%@",user);
 }
+
+-(void)errorHandler:(Fault*)fault
+{
+    NSLog(@"登入失敗%@ , %@" , fault.message , fault.detail);
+}
+
+
 
 
 - (void)didReceiveMemoryWarning

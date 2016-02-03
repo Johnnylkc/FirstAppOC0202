@@ -11,6 +11,8 @@
 
 @interface MainTVC ()
 
+@property(strong,nonatomic)UIView *welcomeView;
+
 @end
 
 @implementation MainTVC
@@ -20,8 +22,14 @@
     [super viewDidLoad];
     
     [self.tableView registerClass:[MainCell class] forCellReuseIdentifier:@"cell"];
+    
+    
 
 }
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
