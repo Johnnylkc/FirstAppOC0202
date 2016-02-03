@@ -44,6 +44,7 @@
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     [userDefault setObject:@"NO" forKey:@"loggedIn"];
+    [userDefault synchronize];
     
     NSLog(@"我想登出了 我累了");
     

@@ -19,7 +19,9 @@
 @property(strong,nonatomic)UITextField *passwordTextField;
 @property(strong,nonatomic)UIButton *loginButton;
 
-
+@property(strong,nonatomic)UITabBarController *tabBarController;
+@property(strong,nonatomic)UIImage *tabBarIcon;
+@property(strong,nonatomic)UIImage *selectedIcon;
 @end
 
 @implementation LoginVC
@@ -46,6 +48,7 @@
     self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 30)];
     self.passwordTextField.center = CGPointMake(self.view.frame.size.width/2, 250);
     self.passwordTextField.borderStyle = UITextBorderStyleBezel;
+    self.passwordTextField.secureTextEntry = YES;
     self.passwordTextField.placeholder = @"password";
     [self.view addSubview:self.passwordTextField];
     
@@ -69,14 +72,24 @@
                              selResponseHandler:@selector(responseHandler:)
                                 selErrorHandler:@selector(errorHandler:)];
     [backendless.userService login:self.emailTextField.text password:self.passwordTextField.text responder:responder];
-
-    [backendless.userService setStayLoggedIn:YES];////////////////
-    
     
     MainTVC *controller = [MainTVC new];
     UINavigationController *controllerNav = [[UINavigationController alloc] initWithRootViewController:controller];
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:controllerNav animated:YES completion:nil];
+    
+    self.tabBarIcon = [UIImage imageNamed:@"001"];
+    self.selectedIcon = [UIImage imageNamed:@"001"];
+    controller.tabBarItem =
+    [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
+    
+    NSArray *controllers = [[NSArray alloc] initWithObjects:controllerNav, nil];
+    self.tabBarController = [UITabBarController new];
+    self.tabBarController.viewControllers = controllers;
+    self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    
+    
+    
+    [self presentViewController:self.tabBarController animated:YES completion:nil];
     
 }
 

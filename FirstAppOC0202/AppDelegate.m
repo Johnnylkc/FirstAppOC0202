@@ -26,7 +26,7 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *logOrNot = [userDefault objectForKey:@"loggedIn"];
     
-    if ((logOrNot = @"YES") )
+    if ([logOrNot isEqualToString:@"YES"] )
     {
     
         MainTVC *controller = [MainTVC new];
@@ -40,11 +40,13 @@
                       secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00"
                      version:@"v1"];
     }
-    else
+    else if([logOrNot isEqualToString:@"NO"])
     {
-        LandingVC *onePage = [LandingVC new];
+        LandingVC *controller = [LandingVC new];
+        UINavigationController *controllerNav =
+        [[UINavigationController alloc] initWithRootViewController:controller];
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.rootViewController = onePage;
+        self.window.rootViewController = controllerNav;
         [self.window makeKeyAndVisible];
         
         [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800"

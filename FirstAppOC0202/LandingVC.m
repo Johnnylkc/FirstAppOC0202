@@ -50,6 +50,10 @@
 
 -(void)allUI
 {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    
     ////signUpButton
     self.signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
     self.signUpButton.center = CGPointMake(self.view.frame.size.width/2, 500);
@@ -73,14 +77,14 @@
 {
     SignUpVC *controller = [SignUpVC new];
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:controller animated:YES completion:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)logIn:(UIButton*)logInButton
 {
     LoginVC *controller = [LoginVC new];
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:controller animated:YES completion:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 
