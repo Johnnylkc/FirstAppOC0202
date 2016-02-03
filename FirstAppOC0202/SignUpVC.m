@@ -79,12 +79,13 @@
     
     [backendless.userService registering:user responder:signUpResponder];
     
-    [backendless.userService setStayLoggedIn:YES];////////////
+    
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.emailTextField.text forKey:@"userEmail"];
     [defaults setObject:self.passwordTextField.text forKey:@"userPassword"];
     [defaults setObject:self.userNameTextField.text forKey:@"userName"];
+    [defaults setObject:@"YES" forKey:@"loggedIn"];
     [defaults synchronize];
         
     MainTVC *controller = [MainTVC new];

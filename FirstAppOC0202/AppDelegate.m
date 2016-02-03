@@ -14,7 +14,6 @@
 
 @interface AppDelegate ()
 
-@property (readonly) BOOL isStayLoggedIn;
 
 @end
 
@@ -24,20 +23,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    if (![[NSUserDefaults standardUserDefaults] valueForKey:@"userEmail"])
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *logOrNot = [userDefault objectForKey:@"loggedIn"];
+    
+    if ((logOrNot = @"YES") )
     {
-        LandingVC *onePage = [LandingVC new];
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.rootViewController = onePage;
-        [self.window makeKeyAndVisible];
-        
-        [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800"
-                      secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00"
-                     version:@"v1"];
-        
-    }
-    else
-    {
+    
         MainTVC *controller = [MainTVC new];
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         UINavigationController *controllerNav =
@@ -48,12 +39,19 @@
         [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800"
                       secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00"
                      version:@"v1"];
-        
-        
     }
-    
-    
-    
+    else
+    {
+        LandingVC *onePage = [LandingVC new];
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.window.rootViewController = onePage;
+        [self.window makeKeyAndVisible];
+        
+        [backendless initApp:@"2C0B46F7-6928-C06A-FF9F-DA8AEA086800"
+                      secret:@"0AD8D1B9-FBF2-C393-FF72-E07F251B1D00"
+                     version:@"v1"];
+
+    }
     
     
     return YES;

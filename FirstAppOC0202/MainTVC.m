@@ -9,6 +9,10 @@
 #import "MainTVC.h"
 #import "MainCell.h"
 
+#import "LandingVC.h"
+
+#import "Backendless.h"
+
 @interface MainTVC ()
 
 @property(strong,nonatomic)UIView *welcomeView;
@@ -23,12 +27,42 @@
     
     [self.tableView registerClass:[MainCell class] forCellReuseIdentifier:@"cell"];
     
+    UIBarButtonItem *logout = [[UIBarButtonItem alloc] initWithTitle:@"shit" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    
+    self.navigationItem.rightBarButtonItem = logout;
+    
     
 
 }
 
+-(void)logout:(id)logout
+{
+    Responder *responder = [Responder responder:self
+                             selResponseHandler:@selector(responseHandler:)
+                                selErrorHandler:@selector(errorHandler:)];
+    [backendless.userService logout:responder];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:@"NO" forKey:@"loggedIn"];
+    
+    NSLog(@"我想登出了 我累了");
+    
+    LandingVC *controller = [LandingVC new];
+    [self presentViewController:controller animated:YES completion:nil];
+    
+    
+}
+
+-(void)responseHandler:(id)responder
+{
+    NSLog(@"成功登出");
+}
 
 
+-(void)errorHandler:(Fault *)fault
+{
+    NSLog(@"想登出？！ 登出失敗喔%@ <%@>", fault.message, fault.detail);
+}
 
 
 - (void)didReceiveMemoryWarning {
