@@ -74,34 +74,6 @@
                                 selErrorHandler:@selector(errorHandler:)];
     [backendless.userService login:self.emailTextField.text password:self.passwordTextField.text responder:responder];
     
-    
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    [userDefault setObject:@"YES" forKey:@"loggedIn"];
-//    [userDefault synchronize];
-//    
-//    
-//    MainTVC *onePage = [MainTVC new];
-//    UINavigationController *onePageNav = [[UINavigationController alloc] initWithRootViewController:onePage];
-//    self.tabBarIcon = [UIImage imageNamed:@"001"];
-//    self.selectedIcon = [UIImage imageNamed:@"001"];
-//    onePage.tabBarItem =
-//    [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
-//    
-//    PersonalTVC *twoPage = [PersonalTVC new];
-//    UINavigationController *twoPageNav = [[UINavigationController alloc] initWithRootViewController:twoPage];
-//    self.tabBarIcon = [UIImage imageNamed:@"002"];
-//    self.selectedIcon = [UIImage imageNamed:@"002"];
-//    twoPage.tabBarItem =
-//    [[UITabBarItem alloc] initWithTitle:@"個人檔案" image:self.tabBarIcon selectedImage:self.selectedIcon];
-//    
-//    
-//    NSArray *controllers = [[NSArray alloc] initWithObjects:onePageNav,twoPageNav, nil];
-//    self.tabBarController = [UITabBarController new];
-//    self.tabBarController.viewControllers = controllers;
-//    self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    
-//    [self presentViewController:self.tabBarController animated:YES completion:nil];
-    
 }
 
 -(id)responseHandler:(Responder*)responder

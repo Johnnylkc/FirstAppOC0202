@@ -13,6 +13,7 @@
 
 @property(strong,nonatomic)UIView *headerView;
 @property(strong,nonatomic)UIImageView *backImage;
+@property(strong,nonatomic)UIImageView *userHeadImage;
 
 @end
 
@@ -32,12 +33,22 @@
 {
     ////headerView
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
-    self.headerView.backgroundColor = [UIColor redColor];
+    self.headerView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableHeaderView = self.headerView;
     
+    ////backImage
     self.backImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back"]];
-    self.backImage.frame = CGRectMake(0, 0, self.view.frame.size.width, 200);
+    self.backImage.frame = CGRectMake(0, 0, self.view.frame.size.width, 180);
     [self.headerView addSubview:self.backImage];
+    
+    ////userHeadImage
+    self.userHeadImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 150, 90, 90)];
+    self.userHeadImage.image = [UIImage imageNamed:@"johnny"];
+    self.userHeadImage.layer.cornerRadius = 5;
+    self.userHeadImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.userHeadImage.layer.borderWidth = 2;
+    self.userHeadImage.clipsToBounds = YES;
+    [self.backImage addSubview:self.userHeadImage];
     
 }
 

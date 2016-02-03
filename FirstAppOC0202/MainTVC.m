@@ -11,6 +11,7 @@
 
 #import "LandingVC.h"
 
+
 #import "Backendless.h"
 
 @interface MainTVC ()
@@ -57,7 +58,8 @@
 {
     NSLog(@"成功登出");
     LandingVC *controller = [LandingVC new];
-    [self presentViewController:controller animated:YES completion:nil];
+    UINavigationController *controllerNav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:controllerNav animated:YES completion:nil];
     return responder;
 }
 
