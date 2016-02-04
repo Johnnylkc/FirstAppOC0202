@@ -70,6 +70,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B22E04451C63985E002CA485 /* MainTVC */ = {
+			isa = PBXGroup;
+			children = (
+				B25B74B41C60EBC900EAC73B /* MainTVC.h */,
+				B25B74B51C60EBC900EAC73B /* MainTVC.m */,
+			);
+			name = MainTVC;
+			sourceTree = "<group>";
+		};
+		B22E04461C639873002CA485 /* PersonalTVC */ = {
+			isa = PBXGroup;
+			children = (
+				B22E04131C6285FE002CA485 /* PersonalTVC.h */,
+				B22E04141C6285FE002CA485 /* PersonalTVC.m */,
+			);
+			name = PersonalTVC;
+			sourceTree = "<group>";
+		};
 		B25B748E1C60EB8100EAC73B = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				B25B74C51C60F1E700EAC73B /* Landing */,
-				B25B74B41C60EBC900EAC73B /* MainTVC.h */,
-				B25B74B51C60EBC900EAC73B /* MainTVC.m */,
-				B22E04131C6285FE002CA485 /* PersonalTVC.h */,
-				B22E04141C6285FE002CA485 /* PersonalTVC.m */,
+				B22E04451C63985E002CA485 /* MainTVC */,
+				B22E04461C639873002CA485 /* PersonalTVC */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
