@@ -87,6 +87,7 @@
     
     [backendless.userService registering:user responder:signUpResponder];
     
+    ////NSUserDefault
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.emailTextField.text forKey:@"userEmail"];
     [defaults setObject:self.passwordTextField.text forKey:@"userPassword"];
@@ -94,7 +95,7 @@
     [defaults setObject:@"YES" forKey:@"loggedIn"];
     [defaults synchronize];
         
-    
+    ////產生UITabBarController
     MainTVC *controller = [MainTVC new];
     UINavigationController *controllerNav = [[UINavigationController alloc] initWithRootViewController:controller];
     

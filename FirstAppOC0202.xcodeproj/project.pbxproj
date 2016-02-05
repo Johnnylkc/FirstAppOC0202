@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A67ECA9FE93D7F01915FFCFC /* Pods_FirstAppOC0202.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1974BB283686B2E125F71A /* Pods_FirstAppOC0202.framework */; };
+		B228B3A51C6495480030A83D /* PersonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = B228B3A41C6495480030A83D /* PersonalView.m */; };
 		B22E04151C6285FE002CA485 /* PersonalTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E04141C6285FE002CA485 /* PersonalTVC.m */; };
 		B22E041B1C62862F002CA485 /* PersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E041A1C62862F002CA485 /* PersonalCell.m */; };
 		B25B749C1C60EB8100EAC73B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B749B1C60EB8100EAC73B /* main.m */; };
@@ -26,6 +27,8 @@
 		003C8FCEE3B90CECEEEB9D8A /* Pods-FirstAppOC0202.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAppOC0202.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirstAppOC0202/Pods-FirstAppOC0202.release.xcconfig"; sourceTree = "<group>"; };
 		2F1974BB283686B2E125F71A /* Pods_FirstAppOC0202.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstAppOC0202.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6070C54EB73CA80527C2C98E /* Pods-FirstAppOC0202.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAppOC0202.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirstAppOC0202/Pods-FirstAppOC0202.debug.xcconfig"; sourceTree = "<group>"; };
+		B228B3A31C6495480030A83D /* PersonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalView.h; sourceTree = "<group>"; };
+		B228B3A41C6495480030A83D /* PersonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalView.m; sourceTree = "<group>"; };
 		B22E04131C6285FE002CA485 /* PersonalTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalTVC.h; sourceTree = "<group>"; };
 		B22E04141C6285FE002CA485 /* PersonalTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalTVC.m; sourceTree = "<group>"; };
 		B22E04191C62862F002CA485 /* PersonalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCell.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				B25B74B81C60EBD600EAC73B /* MainCell.m */,
 				B22E04191C62862F002CA485 /* PersonalCell.h */,
 				B22E041A1C62862F002CA485 /* PersonalCell.m */,
+				B228B3A31C6495480030A83D /* PersonalView.h */,
+				B228B3A41C6495480030A83D /* PersonalView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 				B22E041B1C62862F002CA485 /* PersonalCell.m in Sources */,
 				B25B74A81C60EB8100EAC73B /* FirstAppOC0202.xcdatamodeld in Sources */,
 				B25B74C41C60F17A00EAC73B /* LandingVC.m in Sources */,
+				B228B3A51C6495480030A83D /* PersonalView.m in Sources */,
 				B25B74B61C60EBC900EAC73B /* MainTVC.m in Sources */,
 				B22E04151C6285FE002CA485 /* PersonalTVC.m in Sources */,
 				B25B74C11C60F16500EAC73B /* LoginVC.m in Sources */,
