@@ -10,7 +10,7 @@
 #import "PersonalCell.h"
 #import "PersonalView.h"
 
-@interface PersonalTVC ()
+@interface PersonalTVC () <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 
 
@@ -28,7 +28,26 @@
     [[PersonalView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 250)];
     self.tableView.tableHeaderView = allViews;
     
+    [allViews.uploadButton addTarget:self action:@selector(openCameraRoll:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
 }
+
+
+////打開相機膠卷 最上面要加入2個delegate UINavigationControllerDelegate,UIImagePickerControllerDelegate
+-(void)openCameraRoll:(UIButton*)uploadButton
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:nil];
+    
+}
+
+
+
+
+
 
 
 

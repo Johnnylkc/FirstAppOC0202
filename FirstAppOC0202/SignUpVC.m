@@ -9,6 +9,7 @@
 #import "SignUpVC.h"
 #import "MainTVC.h"
 #import "LoginVC.h"
+#import "PersonalTVC.h"
 
 #import "Backendless.h"
 
@@ -87,30 +88,7 @@
     
     [backendless.userService registering:user responder:signUpResponder];
     
-    ////NSUserDefault
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.emailTextField.text forKey:@"userEmail"];
-    [defaults setObject:self.passwordTextField.text forKey:@"userPassword"];
-    [defaults setObject:self.userNameTextField.text forKey:@"userName"];
-    [defaults setObject:@"YES" forKey:@"loggedIn"];
-    [defaults synchronize];
-        
-    ////產生UITabBarController
-    MainTVC *controller = [MainTVC new];
-    UINavigationController *controllerNav = [[UINavigationController alloc] initWithRootViewController:controller];
     
-    self.tabBarIcon = [UIImage imageNamed:@"001"];
-    self.selectedIcon = [UIImage imageNamed:@"001"];
-    controller.tabBarItem =
-    [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
-    
-    NSArray *controllers = [[NSArray alloc] initWithObjects:controllerNav, nil];
-    self.tabBarController = [UITabBarController new];
-    self.tabBarController.viewControllers = controllers;
-    self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-
-    
-    [self presentViewController:self.tabBarController animated:YES completion:nil];
     
 }
 
@@ -118,6 +96,38 @@
 {
     BackendlessUser *user = (BackendlessUser*)responder;
     NSLog(@"註冊成功%@",user);
+    
+    ////NSUserDefault
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
+    [userDefault setObject:self.emailTextField.text forKey:@"userEmail"];
+    [userDefault setObject:self.passwordTextField.text forKey:@"userPassword"];
+    [userDefault setObject:self.userNameTextField.text forKey:@"userName"];
+    [userDefault setObject:@"YES" forKey:@"loggedIn"];
+    [userDefault synchronize];
+    
+    ////產生UITabBarController
+    MainTVC *onePage = [MainTVC new];
+    UINavigationController *onePageNav = [[UINavigationController alloc] initWithRootViewController:onePage];
+    self.tabBarIcon = [UIImage imageNamed:@"001"];
+    self.selectedIcon = [UIImage imageNamed:@"001"];
+    onePage.tabBarItem =
+    [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
+    
+    PersonalTVC *twoPage = [PersonalTVC new];
+    UINavigationController *twoPageNav = [[UINavigationController alloc] initWithRootViewController:twoPage];
+    self.tabBarIcon = [UIImage imageNamed:@"002"];
+    self.selectedIcon = [UIImage imageNamed:@"002"];
+    twoPage.tabBarItem =
+    [[UITabBarItem alloc] initWithTitle:@"第二頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
+    
+    NSArray *controllers = [[NSArray alloc] initWithObjects:onePageNav,twoPageNav, nil];
+    self.tabBarController = [UITabBarController new];
+    self.tabBarController.viewControllers = controllers;
+    self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    
+    [self presentViewController:self.tabBarController animated:YES completion:nil];
    
 }
 
