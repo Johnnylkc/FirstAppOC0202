@@ -56,15 +56,16 @@
     
     ////signUpButton
     self.signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-    self.signUpButton.center = CGPointMake(self.view.frame.size.width/2, 500);
+    self.signUpButton.center = CGPointMake(self.view.frame.size.width/2, 400);
     self.signUpButton.backgroundColor = [UIColor redColor];
     [self.signUpButton setTitle:@"註冊" forState:UIControlStateNormal];
     [self.signUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.signUpButton addTarget:self action:@selector(signUp:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.signUpButton];
     
+    ////loginButton
     self.logInButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
-    self.logInButton.center = CGPointMake(self.view.frame.size.width/2, 550);
+    self.logInButton.center = CGPointMake(self.view.frame.size.width/2, 450);
     self.logInButton.backgroundColor = [UIColor blueColor];
     [self.logInButton setTitle:@"登入" forState:UIControlStateNormal];
     [self.logInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

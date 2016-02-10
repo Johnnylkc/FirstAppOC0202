@@ -27,13 +27,15 @@
         self.backImage.image = [UIImage imageNamed:@"back"];
         [self.headerView addSubview:self.backImage];
         
-        self.userImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 160, 90, 90)];
-        self.userImage.image = [UIImage imageNamed:@"johnny"];
-        self.userImage.layer.cornerRadius = 5;
-        self.userImage.layer.borderWidth = 2;
-        self.userImage.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.userImage.clipsToBounds = YES;
-        [self.backImage addSubview:self.userImage];
+        self.userImageButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 160, 90, 90)];
+        [self.userImageButton setBackgroundImage:[UIImage imageNamed:@"johnny"] forState:UIControlStateNormal];
+        self.userImageButton.layer.cornerRadius = 5;
+        self.userImageButton.layer.borderWidth = 2;
+        self.userImageButton.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.userImageButton.clipsToBounds = YES;
+        [self.headerView addSubview:self.userImageButton];
+        
+        
         
         NSUserDefaults *userInfo = [NSUserDefaults standardUserDefaults];
         self.userName = [[UILabel alloc] initWithFrame:CGRectMake(120, 220, 200, 30)];
@@ -41,11 +43,7 @@
         self.userName.text = [userInfo valueForKey:@"userName"];
         [self.headerView addSubview:self.userName];
         
-        self.uploadButton = [[UIButton alloc] initWithFrame:CGRectMake(120, 150, 100, 30)];
-        self.uploadButton.backgroundColor = [UIColor blackColor];
-        [self.uploadButton setTitle:@"上傳照片" forState:UIControlStateNormal];
-        [self.uploadButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.headerView addSubview:self.uploadButton];
+  
         
         
     }

@@ -12,8 +12,7 @@
 
 @property(strong,nonatomic)UIView *headerView;
 @property(strong,nonatomic)UIImageView *backImage;
-@property(strong,nonatomic)UIImageView *userImage;
+@property(strong,nonatomic)UIButton *userImageButton;
 @property(strong,nonatomic)UILabel *userName;
-@property(strong,nonatomic)UIButton *uploadButton;
 
 @end

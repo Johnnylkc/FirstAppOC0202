@@ -10,6 +10,48 @@
 
 @implementation MainCell
 
+
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self)
+    {
+        self.basicView = [[UIView alloc] init];
+        self.basicView.backgroundColor = [UIColor whiteColor];
+        [self.contentView addSubview:self.basicView];
+        
+        self.userHeadImage = [[UIImageView alloc] init];
+        self.userHeadImage.backgroundColor = [UIColor grayColor];
+        self.userHeadImage.layer.cornerRadius = self.userHeadImage.frame.size.width/2;
+        self.userHeadImage.contentMode = UIViewContentModeScaleToFill;
+        [self.basicView addSubview:self.userHeadImage];
+        
+        self.userNameLabel = [[UILabel alloc] init];
+        [self.basicView addSubview:self.userNameLabel];
+        
+        self.countryLabel = [[UILabel alloc] init];
+        self.countryLabel.textColor = [UIColor grayColor];
+        [self.basicView addSubview:self.countryLabel];
+        
+        self.postedImageButton = [[UIButton alloc] init];
+        [self.basicView addSubview:self.postedImageButton];
+        
+        
+        
+        
+    }
+
+    return self;
+}
+
+
+
+
+
+
+
+
 - (void)awakeFromNib {
     // Initialization code
 }

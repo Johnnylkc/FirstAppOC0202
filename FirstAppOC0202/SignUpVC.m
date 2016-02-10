@@ -9,7 +9,6 @@
 #import "SignUpVC.h"
 #import "MainTVC.h"
 #import "LoginVC.h"
-#import "PersonalTVC.h"
 
 #import "Backendless.h"
 
@@ -114,14 +113,8 @@
     onePage.tabBarItem =
     [[UITabBarItem alloc] initWithTitle:@"第一頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
     
-    PersonalTVC *twoPage = [PersonalTVC new];
-    UINavigationController *twoPageNav = [[UINavigationController alloc] initWithRootViewController:twoPage];
-    self.tabBarIcon = [UIImage imageNamed:@"002"];
-    self.selectedIcon = [UIImage imageNamed:@"002"];
-    twoPage.tabBarItem =
-    [[UITabBarItem alloc] initWithTitle:@"第二頁" image:self.tabBarIcon selectedImage:self.selectedIcon];
     
-    NSArray *controllers = [[NSArray alloc] initWithObjects:onePageNav,twoPageNav, nil];
+    NSArray *controllers = [[NSArray alloc] initWithObjects:onePageNav, nil];
     self.tabBarController = [UITabBarController new];
     self.tabBarController.viewControllers = controllers;
     self.tabBarController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

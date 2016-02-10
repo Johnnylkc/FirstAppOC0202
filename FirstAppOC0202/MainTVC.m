@@ -8,10 +8,8 @@
 
 #import "MainTVC.h"
 #import "MainCell.h"
-
 #import "LandingVC.h"
-
-
+#import "PhotoViewerVC.h"
 #import "Backendless.h"
 
 @interface MainTVC ()
@@ -28,6 +26,11 @@
     
     [self.tableView registerClass:[MainCell class] forCellReuseIdentifier:@"cell"];
     
+    self.tableView.backgroundColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
     UIBarButtonItem *logout = [[UIBarButtonItem alloc] initWithTitle:@"shit" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
     
     self.navigationItem.rightBarButtonItem = logout;
@@ -36,6 +39,9 @@
 
 }
 
+
+
+////登出
 -(void)logout:(id)logout
 {
     Responder *responder = [Responder responder:self
@@ -49,10 +55,8 @@
     
     NSLog(@"我想登出了 我累了");
     
-    
-    
-    
 }
+
 
 -(id)responseHandler:(id)responder
 {
@@ -68,7 +72,7 @@
 {
     NSLog(@"想登出？！ 登出失敗喔%@ <%@>", fault.message, fault.detail);
 }
-
+////////以上是登出
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -87,14 +91,56 @@
     return 20;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 310;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MainCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"ggg";
+    cell.backgroundColor = [UIColor clearColor];
+    
+    /////all frame
+    cell.basicView.frame = CGRectMake(0, 0, self.view.frame.size.width, 300);
+    
+    cell.userHeadImage.frame = CGRectMake(10, 10, 50, 50);
+   
+    cell.userNameLabel.frame = CGRectMake(70, 15, 200, 30);
+    cell.userNameLabel.font = [UIFont boldSystemFontOfSize:20];
+    
+    cell.countryLabel.frame = CGRectMake(70, 40, 200 , 20);
+    cell.countryLabel.font = [UIFont systemFontOfSize:15];
+
+    cell.postedImageButton.frame = CGRectMake(0, 70, self.view.frame.size.width, 200);
+    [cell.postedImageButton addTarget:self action:@selector(viewPhoto:) forControlEvents:UIControlEventTouchUpInside];
+
+
+    
+    
+    
+    
+    cell.userHeadImage.image = [UIImage imageNamed:@"005"];
+    cell.userNameLabel.text = @"ketchup";
+    cell.countryLabel.text = @"Taiwan , Kaohsiung";
+    [cell.postedImageButton setBackgroundImage:[UIImage imageNamed:@"006"] forState:UIControlStateNormal];
+    
     
     return cell;
+}
+
+
+
+-(void)viewPhoto:(UIButton*)postedImageButton
+{
+    NSLog(@"進入相片瀏覽模式");
+    PhotoViewerVC *controller = [PhotoViewerVC new];
+    
+    
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:controller animated:YES completion:nil];
+    
 }
 
 

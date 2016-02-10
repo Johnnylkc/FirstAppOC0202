@@ -10,4 +10,10 @@
 
 @interface MainCell : UITableViewCell
 
+@property(strong,nonatomic)UIView *basicView;
+@property(strong,nonatomic)UIImageView *userHeadImage;
+@property(strong,nonatomic)UILabel *userNameLabel;
+@property(strong,nonatomic)UILabel *countryLabel;
+@property(strong,nonatomic)UIButton *postedImageButton;
+
 @end

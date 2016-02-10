@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A67ECA9FE93D7F01915FFCFC /* Pods_FirstAppOC0202.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1974BB283686B2E125F71A /* Pods_FirstAppOC0202.framework */; };
-		B228B3A51C6495480030A83D /* PersonalView.m in Sources */ = {isa = PBXBuildFile; fileRef = B228B3A41C6495480030A83D /* PersonalView.m */; };
-		B22E04151C6285FE002CA485 /* PersonalTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E04141C6285FE002CA485 /* PersonalTVC.m */; };
-		B22E041B1C62862F002CA485 /* PersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22E041A1C62862F002CA485 /* PersonalCell.m */; };
+		B24DC14C1C69A03C000B2CD8 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B24DC14B1C69A03C000B2CD8 /* TestVC.m */; };
 		B25B749C1C60EB8100EAC73B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B749B1C60EB8100EAC73B /* main.m */; };
 		B25B749F1C60EB8100EAC73B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B749E1C60EB8100EAC73B /* AppDelegate.m */; };
 		B25B74A81C60EB8100EAC73B /* FirstAppOC0202.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B25B74A61C60EB8100EAC73B /* FirstAppOC0202.xcdatamodeld */; };
@@ -21,18 +19,15 @@
 		B25B74BE1C60F15500EAC73B /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74BD1C60F15500EAC73B /* SignUpVC.m */; };
 		B25B74C11C60F16500EAC73B /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74C01C60F16500EAC73B /* LoginVC.m */; };
 		B25B74C41C60F17A00EAC73B /* LandingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74C31C60F17A00EAC73B /* LandingVC.m */; };
+		B2FC3A511C6B064B000EE987 /* PhotoViewerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		003C8FCEE3B90CECEEEB9D8A /* Pods-FirstAppOC0202.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAppOC0202.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirstAppOC0202/Pods-FirstAppOC0202.release.xcconfig"; sourceTree = "<group>"; };
 		2F1974BB283686B2E125F71A /* Pods_FirstAppOC0202.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstAppOC0202.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6070C54EB73CA80527C2C98E /* Pods-FirstAppOC0202.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAppOC0202.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirstAppOC0202/Pods-FirstAppOC0202.debug.xcconfig"; sourceTree = "<group>"; };
-		B228B3A31C6495480030A83D /* PersonalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalView.h; sourceTree = "<group>"; };
-		B228B3A41C6495480030A83D /* PersonalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalView.m; sourceTree = "<group>"; };
-		B22E04131C6285FE002CA485 /* PersonalTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalTVC.h; sourceTree = "<group>"; };
-		B22E04141C6285FE002CA485 /* PersonalTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalTVC.m; sourceTree = "<group>"; };
-		B22E04191C62862F002CA485 /* PersonalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCell.h; sourceTree = "<group>"; };
-		B22E041A1C62862F002CA485 /* PersonalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCell.m; sourceTree = "<group>"; };
+		B24DC14A1C69A03C000B2CD8 /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
+		B24DC14B1C69A03C000B2CD8 /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
 		B25B74971C60EB8100EAC73B /* FirstAppOC0202.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstAppOC0202.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25B749B1C60EB8100EAC73B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B25B749D1C60EB8100EAC73B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +46,8 @@
 		B25B74C01C60F16500EAC73B /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		B25B74C21C60F17A00EAC73B /* LandingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingVC.h; sourceTree = "<group>"; };
 		B25B74C31C60F17A00EAC73B /* LandingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingVC.m; sourceTree = "<group>"; };
+		B2FC3A4F1C6B064B000EE987 /* PhotoViewerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewerVC.h; sourceTree = "<group>"; };
+		B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,17 +75,10 @@
 			children = (
 				B25B74B41C60EBC900EAC73B /* MainTVC.h */,
 				B25B74B51C60EBC900EAC73B /* MainTVC.m */,
+				B2FC3A4F1C6B064B000EE987 /* PhotoViewerVC.h */,
+				B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */,
 			);
 			name = MainTVC;
-			sourceTree = "<group>";
-		};
-		B22E04461C639873002CA485 /* PersonalTVC */ = {
-			isa = PBXGroup;
-			children = (
-				B22E04131C6285FE002CA485 /* PersonalTVC.h */,
-				B22E04141C6285FE002CA485 /* PersonalTVC.m */,
-			);
-			name = PersonalTVC;
 			sourceTree = "<group>";
 		};
 		B25B748E1C60EB8100EAC73B = {
@@ -138,7 +128,8 @@
 			children = (
 				B25B74C51C60F1E700EAC73B /* Landing */,
 				B22E04451C63985E002CA485 /* MainTVC */,
-				B22E04461C639873002CA485 /* PersonalTVC */,
+				B24DC14A1C69A03C000B2CD8 /* TestVC.h */,
+				B24DC14B1C69A03C000B2CD8 /* TestVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -148,10 +139,6 @@
 			children = (
 				B25B74B71C60EBD600EAC73B /* MainCell.h */,
 				B25B74B81C60EBD600EAC73B /* MainCell.m */,
-				B22E04191C62862F002CA485 /* PersonalCell.h */,
-				B22E041A1C62862F002CA485 /* PersonalCell.m */,
-				B228B3A31C6495480030A83D /* PersonalView.h */,
-				B228B3A41C6495480030A83D /* PersonalView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -212,6 +199,7 @@
 				TargetAttributes = {
 					B25B74961C60EB8100EAC73B = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 8H7X36TF25;
 					};
 				};
 			};
@@ -301,14 +289,13 @@
 				B25B74BE1C60F15500EAC73B /* SignUpVC.m in Sources */,
 				B25B74B91C60EBD600EAC73B /* MainCell.m in Sources */,
 				B25B749F1C60EB8100EAC73B /* AppDelegate.m in Sources */,
-				B22E041B1C62862F002CA485 /* PersonalCell.m in Sources */,
+				B24DC14C1C69A03C000B2CD8 /* TestVC.m in Sources */,
 				B25B74A81C60EB8100EAC73B /* FirstAppOC0202.xcdatamodeld in Sources */,
 				B25B74C41C60F17A00EAC73B /* LandingVC.m in Sources */,
-				B228B3A51C6495480030A83D /* PersonalView.m in Sources */,
 				B25B74B61C60EBC900EAC73B /* MainTVC.m in Sources */,
-				B22E04151C6285FE002CA485 /* PersonalTVC.m in Sources */,
 				B25B74C11C60F16500EAC73B /* LoginVC.m in Sources */,
 				B25B749C1C60EB8100EAC73B /* main.m in Sources */,
+				B2FC3A511C6B064B000EE987 /* PhotoViewerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,10 +398,13 @@
 			baseConfigurationReference = 6070C54EB73CA80527C2C98E /* Pods-FirstAppOC0202.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FirstAppOC0202/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnnyketchup.FirstAppOC0202;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -423,10 +413,13 @@
 			baseConfigurationReference = 003C8FCEE3B90CECEEEB9D8A /* Pods-FirstAppOC0202.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FirstAppOC0202/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnnyketchup.FirstAppOC0202;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
