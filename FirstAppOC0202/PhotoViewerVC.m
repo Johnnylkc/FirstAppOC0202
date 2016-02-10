@@ -48,6 +48,8 @@
     self.detailImage.image = [UIImage imageNamed:@"006"];
     [self.scrollView addSubview:self.detailImage];
     
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backToTable:)];
+    [self.scrollView addGestureRecognizer:self.tapGesture];
     
 }
 
@@ -57,6 +59,13 @@
     return self.detailImage;
 }
 
+-(void)backToTable:(UITapGestureRecognizer*)tapGesture
+{
+    NSLog(@"tap 我要回到前一頁");
+    MainTVC *controller = [MainTVC new];
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 

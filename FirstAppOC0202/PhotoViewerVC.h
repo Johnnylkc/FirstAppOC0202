@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainTVC.h"
 
 @interface PhotoViewerVC : UIViewController <UIScrollViewDelegate>
 {
@@ -15,7 +16,7 @@
 
 @property(strong,nonatomic)UIScrollView *scrollView;
 @property(strong,nonatomic)UIImageView *detailImage;
-
+@property(strong,nonatomic)UITapGestureRecognizer *tapGesture;
 
 
 @end
