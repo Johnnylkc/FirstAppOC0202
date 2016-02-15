@@ -11,6 +11,7 @@
 #import "LandingVC.h"
 #import "PhotoViewerVC.h"
 #import "Backendless.h"
+#import "PublishVC.h"
 
 @interface MainTVC ()
 
@@ -31,9 +32,11 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     
-    UIBarButtonItem *logout = [[UIBarButtonItem alloc] initWithTitle:@"shit" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    UIBarButtonItem *logout = [[UIBarButtonItem alloc] initWithTitle:@"登出" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    self.navigationItem.leftBarButtonItem = logout;
     
-    self.navigationItem.rightBarButtonItem = logout;
+    UIBarButtonItem *publish = [[UIBarButtonItem alloc] initWithTitle:@"post" style:UIBarButtonItemStylePlain target:self action:@selector(publish:)];
+    self.navigationItem.rightBarButtonItem = publish;
     
     
 
@@ -74,7 +77,21 @@
 }
 ////////以上是登出
 
-- (void)didReceiveMemoryWarning {
+
+
+-(void)publish:(id)publish
+{
+    PublishVC *controller = [PublishVC new];
+    [self presentViewController:controller animated:YES completion:nil];
+    
+}
+
+
+
+
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -93,7 +110,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 310;
+    return 350;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,7 +120,7 @@
     cell.backgroundColor = [UIColor clearColor];
     
     /////all frame
-    cell.basicView.frame = CGRectMake(0, 0, self.view.frame.size.width, 300);
+    cell.basicView.frame = CGRectMake(0, 0, self.view.frame.size.width, 340);
     
     cell.userHeadImage.frame = CGRectMake(10, 10, 50, 50);
    

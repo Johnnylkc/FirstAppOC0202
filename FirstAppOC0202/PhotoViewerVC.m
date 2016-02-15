@@ -40,7 +40,7 @@
     //self.scrollView.contentSize = CGSizeMake(viewWidth*3, viewHeight*3);
     self.scrollView.maximumZoomScale = 2;
     self.scrollView.minimumZoomScale  = 1;
-    self.scrollView.clipsToBounds = YES;
+    //self.scrollView.clipsToBounds = YES;
     [self.view addSubview:self.scrollView];
     
     self.detailImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 200)];
@@ -48,10 +48,11 @@
     self.detailImage.image = [UIImage imageNamed:@"006"];
     [self.scrollView addSubview:self.detailImage];
     
-    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backToTable:)];
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(exit:)];
+    //[self.tapGesture setDirection:UISwipeGestureRecognizerDirectionUp];
     [self.scrollView addGestureRecognizer:self.tapGesture];
     
-}
+   }
 
 
 -(UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -59,11 +60,10 @@
     return self.detailImage;
 }
 
--(void)backToTable:(UITapGestureRecognizer*)tapGesture
+
+-(void)exit:(UIGestureRecognizer*)tapGesture
 {
-    NSLog(@"tap 我要回到前一頁");
-    MainTVC *controller = [MainTVC new];
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    NSLog(@"退出相片瀏覽模式");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -73,6 +73,8 @@
     [self.signUpButton addTarget:self action:@selector(signUp:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.signUpButton];
     
+    
+    
     }
 
 -(void)signUp:(UIButton*)signUpButton
