@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A67ECA9FE93D7F01915FFCFC /* Pods_FirstAppOC0202.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1974BB283686B2E125F71A /* Pods_FirstAppOC0202.framework */; };
 		B24DC14C1C69A03C000B2CD8 /* TestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B24DC14B1C69A03C000B2CD8 /* TestVC.m */; };
-		B252AE201C70BD4D009CF795 /* PublishVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B252AE1F1C70BD4D009CF795 /* PublishVC.m */; };
 		B25B749C1C60EB8100EAC73B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B749B1C60EB8100EAC73B /* main.m */; };
 		B25B749F1C60EB8100EAC73B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B749E1C60EB8100EAC73B /* AppDelegate.m */; };
 		B25B74A81C60EB8100EAC73B /* FirstAppOC0202.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B25B74A61C60EB8100EAC73B /* FirstAppOC0202.xcdatamodeld */; };
@@ -20,6 +19,7 @@
 		B25B74BE1C60F15500EAC73B /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74BD1C60F15500EAC73B /* SignUpVC.m */; };
 		B25B74C11C60F16500EAC73B /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74C01C60F16500EAC73B /* LoginVC.m */; };
 		B25B74C41C60F17A00EAC73B /* LandingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74C31C60F17A00EAC73B /* LandingVC.m */; };
+		B2C14B841C71DB5A0027A850 /* PublishTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C14B831C71DB5A0027A850 /* PublishTVC.m */; };
 		B2FC3A511C6B064B000EE987 /* PhotoViewerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */; };
 /* End PBXBuildFile section */
 
@@ -29,8 +29,6 @@
 		6070C54EB73CA80527C2C98E /* Pods-FirstAppOC0202.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAppOC0202.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirstAppOC0202/Pods-FirstAppOC0202.debug.xcconfig"; sourceTree = "<group>"; };
 		B24DC14A1C69A03C000B2CD8 /* TestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestVC.h; sourceTree = "<group>"; };
 		B24DC14B1C69A03C000B2CD8 /* TestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestVC.m; sourceTree = "<group>"; };
-		B252AE1E1C70BD4D009CF795 /* PublishVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishVC.h; sourceTree = "<group>"; };
-		B252AE1F1C70BD4D009CF795 /* PublishVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishVC.m; sourceTree = "<group>"; };
 		B25B74971C60EB8100EAC73B /* FirstAppOC0202.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstAppOC0202.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25B749B1C60EB8100EAC73B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B25B749D1C60EB8100EAC73B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		B25B74C01C60F16500EAC73B /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		B25B74C21C60F17A00EAC73B /* LandingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingVC.h; sourceTree = "<group>"; };
 		B25B74C31C60F17A00EAC73B /* LandingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingVC.m; sourceTree = "<group>"; };
+		B2C14B821C71DB5A0027A850 /* PublishTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishTVC.h; sourceTree = "<group>"; };
+		B2C14B831C71DB5A0027A850 /* PublishTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishTVC.m; sourceTree = "<group>"; };
 		B2FC3A4F1C6B064B000EE987 /* PhotoViewerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewerVC.h; sourceTree = "<group>"; };
 		B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,8 +80,8 @@
 				B25B74B51C60EBC900EAC73B /* MainTVC.m */,
 				B2FC3A4F1C6B064B000EE987 /* PhotoViewerVC.h */,
 				B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */,
-				B252AE1E1C70BD4D009CF795 /* PublishVC.h */,
-				B252AE1F1C70BD4D009CF795 /* PublishVC.m */,
+				B2C14B821C71DB5A0027A850 /* PublishTVC.h */,
+				B2C14B831C71DB5A0027A850 /* PublishTVC.m */,
 			);
 			name = MainTVC;
 			sourceTree = "<group>";
@@ -294,8 +294,8 @@
 				B25B74BE1C60F15500EAC73B /* SignUpVC.m in Sources */,
 				B25B74B91C60EBD600EAC73B /* MainCell.m in Sources */,
 				B25B749F1C60EB8100EAC73B /* AppDelegate.m in Sources */,
+				B2C14B841C71DB5A0027A850 /* PublishTVC.m in Sources */,
 				B24DC14C1C69A03C000B2CD8 /* TestVC.m in Sources */,
-				B252AE201C70BD4D009CF795 /* PublishVC.m in Sources */,
 				B25B74A81C60EB8100EAC73B /* FirstAppOC0202.xcdatamodeld in Sources */,
 				B25B74C41C60F17A00EAC73B /* LandingVC.m in Sources */,
 				B25B74B61C60EBC900EAC73B /* MainTVC.m in Sources */,

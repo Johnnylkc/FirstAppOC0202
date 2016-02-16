@@ -7,15 +7,10 @@
 //
 
 #import "MainTVC.h"
-#import "MainCell.h"
-#import "LandingVC.h"
-#import "PhotoViewerVC.h"
-#import "Backendless.h"
-#import "PublishVC.h"
+
 
 @interface MainTVC ()
 
-@property(strong,nonatomic)UIView *welcomeView;
 
 @end
 
@@ -38,7 +33,7 @@
     UIBarButtonItem *publish = [[UIBarButtonItem alloc] initWithTitle:@"post" style:UIBarButtonItemStylePlain target:self action:@selector(publish:)];
     self.navigationItem.rightBarButtonItem = publish;
     
-    
+   
 
 }
 
@@ -81,9 +76,11 @@
 
 -(void)publish:(id)publish
 {
-    PublishVC *controller = [PublishVC new];
-    [self presentViewController:controller animated:YES completion:nil];
-    
+//    PublishVC *controller = [PublishVC new];
+//    [self presentViewController:controller animated:YES completion:nil];
+    PublishTVC *controller = [PublishTVC new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 
@@ -105,7 +102,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 10;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

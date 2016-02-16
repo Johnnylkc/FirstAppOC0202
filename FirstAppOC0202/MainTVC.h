@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainCell.h"
+#import "LandingVC.h"
+#import "PhotoViewerVC.h"
+#import "PublishTVC.h"
+
+
+#import "Backendless.h"
 
 @interface MainTVC : UITableViewController
+
+@property(strong,nonatomic)UIView *welcomeView;
+
 
 @end
