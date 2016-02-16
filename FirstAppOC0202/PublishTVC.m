@@ -49,22 +49,20 @@
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
     self.textView.delegate = self;
     self.textView.backgroundColor = [UIColor orangeColor];
-    self.textView.font = [UIFont systemFontOfSize:15];
+    self.textView.font = [UIFont systemFontOfSize:25];
     self.textView.scrollEnabled = NO;
     
-    
-//    CGRect frame = self.textView.frame;
-//    frame.size.height = self.textView.contentSize.height;
-//    self.textView.frame = frame;
+    self.pickedImage =
+    [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 300)];
+    self.pickedImage.backgroundColor = [UIColor redColor];
 
-    self.tableView.estimatedRowHeight = 150;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
 }
 
 -(void)doSomeShit:(UIButton*)userImageButton
 {
     NSLog(@"這個按鈕目前還沒給他功能");
+
 }
 
 -(void)cancel:(UIButton*)cacelButton
@@ -76,10 +74,11 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     CGFloat fixedWidth = textView.frame.size.width;
-    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, CGFLOAT_MAX)];
     CGRect newFrame = textView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     textView.frame = newFrame;
+
 }
 
 
@@ -106,26 +105,25 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
+   
+    
     CGFloat rowHeight;
     switch (indexPath.row)
     {
         case 0:
-            rowHeight = self.textView.frame.size.height + 5;
+            rowHeight = self.textView.contentSize.height + 5;
             break;
+            
+        case 1:
+            rowHeight = self.pickedImage.frame.size.height;
             
         default:
             break;
     }
     
-    
-    
     return rowHeight;
 }
 
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100.0;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -141,6 +139,11 @@
             [cell addSubview:self.textView];
             break;
             
+        case 1:
+            self.pickedImage.image = [UIImage imageNamed:@"008"];
+            [cell addSubview:self.pickedImage];
+            break;
+        
         default:
             break;
     }

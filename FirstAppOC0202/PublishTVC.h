@@ -15,7 +15,7 @@
 @property(strong,nonatomic)UIButton *cancelButton;
 
 @property(strong,nonatomic)UITextView *textView;
-
+@property(strong,nonatomic)UIImageView *pickedImage;
 
 
 @end
