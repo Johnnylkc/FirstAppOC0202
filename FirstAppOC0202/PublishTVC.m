@@ -46,7 +46,7 @@
     self.navigationItem.rightBarButtonItem = rightButton;
     /////////////////以上是navigation的UI
     
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
     self.textView.delegate = self;
     self.textView.backgroundColor = [UIColor orangeColor];
     self.textView.font = [UIFont systemFontOfSize:25];
@@ -58,11 +58,10 @@
     self.pickedImage.backgroundColor = [UIColor redColor];
     
     
-    FuntionBarView *functionBar =
-    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-100, self.tableView.frame.size.width, 55)];
-    
-    [self.tableView addSubview:functionBar];
-    
+//    FuntionBarView *functionBar =
+//    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-100, self.tableView.frame.size.width, 55)];
+//    
+//    [self.tableView addSubview:functionBar];
     
 
     
@@ -86,16 +85,13 @@
     CGRect newFrame = textView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     textView.frame = newFrame;
-
-}
-
-
-////
--(void)textViewDidBeginEditing:(UITextView *)textView
-{
     
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
     
 }
+
+
 
 
 
@@ -120,18 +116,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
-   
-    
     CGFloat rowHeight;
+    
     switch (indexPath.row)
     {
         case 0:
-            rowHeight = self.textView.contentSize.height + 5;
+            rowHeight = self.textView.frame.size.height;
             break;
             
         case 1:
             rowHeight = self.pickedImage.frame.size.height;
+            break;
+            
             
         default:
             break;
@@ -141,12 +137,18 @@
 }
 
 
+
+
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     UITableViewCell *cell =
     [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    
     
     
     switch (indexPath.row)
