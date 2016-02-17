@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FuntionBarView.h"
 
 @interface PublishTVC : UITableViewController <UITextViewDelegate>
 

@@ -44,17 +44,26 @@
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:self.cancelButton];
     self.navigationItem.rightBarButtonItem = rightButton;
-    
+    /////////////////以上是navigation的UI
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
     self.textView.delegate = self;
     self.textView.backgroundColor = [UIColor orangeColor];
     self.textView.font = [UIFont systemFontOfSize:25];
     self.textView.scrollEnabled = NO;
+    [self.textView becomeFirstResponder];
     
     self.pickedImage =
     [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 300)];
     self.pickedImage.backgroundColor = [UIColor redColor];
+    
+    
+    FuntionBarView *functionBar =
+    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-100, self.tableView.frame.size.width, 55)];
+    
+    [self.tableView addSubview:functionBar];
+    
+    
 
     
 }
@@ -62,7 +71,6 @@
 -(void)doSomeShit:(UIButton*)userImageButton
 {
     NSLog(@"這個按鈕目前還沒給他功能");
-
 }
 
 -(void)cancel:(UIButton*)cacelButton
@@ -70,7 +78,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+/////讓textView可以隨著內容的字打的越多 高度跟著改變
 - (void)textViewDidChange:(UITextView *)textView
 {
     CGFloat fixedWidth = textView.frame.size.width;
@@ -79,6 +87,14 @@
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     textView.frame = newFrame;
 
+}
+
+
+////
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    
+    
 }
 
 

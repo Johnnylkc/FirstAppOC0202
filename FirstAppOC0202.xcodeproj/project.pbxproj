@@ -20,6 +20,7 @@
 		B25B74C11C60F16500EAC73B /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74C01C60F16500EAC73B /* LoginVC.m */; };
 		B25B74C41C60F17A00EAC73B /* LandingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B25B74C31C60F17A00EAC73B /* LandingVC.m */; };
 		B2C14B841C71DB5A0027A850 /* PublishTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C14B831C71DB5A0027A850 /* PublishTVC.m */; };
+		B2C14B8A1C738AB00027A850 /* FuntionBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C14B891C738AB00027A850 /* FuntionBarView.m */; };
 		B2FC3A511C6B064B000EE987 /* PhotoViewerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		B25B74C31C60F17A00EAC73B /* LandingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingVC.m; sourceTree = "<group>"; };
 		B2C14B821C71DB5A0027A850 /* PublishTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishTVC.h; sourceTree = "<group>"; };
 		B2C14B831C71DB5A0027A850 /* PublishTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishTVC.m; sourceTree = "<group>"; };
+		B2C14B881C738AB00027A850 /* FuntionBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuntionBarView.h; sourceTree = "<group>"; };
+		B2C14B891C738AB00027A850 /* FuntionBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuntionBarView.m; sourceTree = "<group>"; };
 		B2FC3A4F1C6B064B000EE987 /* PhotoViewerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewerVC.h; sourceTree = "<group>"; };
 		B2FC3A501C6B064B000EE987 /* PhotoViewerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +147,8 @@
 			children = (
 				B25B74B71C60EBD600EAC73B /* MainCell.h */,
 				B25B74B81C60EBD600EAC73B /* MainCell.m */,
+				B2C14B881C738AB00027A850 /* FuntionBarView.h */,
+				B2C14B891C738AB00027A850 /* FuntionBarView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				B25B74B61C60EBC900EAC73B /* MainTVC.m in Sources */,
 				B25B74C11C60F16500EAC73B /* LoginVC.m in Sources */,
 				B25B749C1C60EB8100EAC73B /* main.m in Sources */,
+				B2C14B8A1C738AB00027A850 /* FuntionBarView.m in Sources */,
 				B2FC3A511C6B064B000EE987 /* PhotoViewerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
