@@ -48,20 +48,21 @@
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
     self.textView.delegate = self;
-    self.textView.backgroundColor = [UIColor orangeColor];
-    self.textView.font = [UIFont systemFontOfSize:25];
+    //self.textView.backgroundColor = [UIColor orangeColor];
+    self.textView.font = [UIFont systemFontOfSize:20];
     self.textView.scrollEnabled = NO;
     [self.textView becomeFirstResponder];
     
     self.pickedImage =
-    [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 300)];
+    [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 400)];
+    self.pickedImage.contentMode = UIViewContentModeScaleAspectFit;
     self.pickedImage.backgroundColor = [UIColor redColor];
+
     
-    
-//    FuntionBarView *functionBar =
-//    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-100, self.tableView.frame.size.width, 55)];
-//    
-//    [self.tableView addSubview:functionBar];
+    FuntionBarView *functionBar =
+    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-100, self.tableView.frame.size.width, 55)];
+    [functionBar.cameraButton addTarget:self action:@selector(cameraOrphotos:) forControlEvents:UIControlEventTouchUpInside];
+    [self.tableView addSubview:functionBar];
     
 
     
@@ -70,11 +71,18 @@
 -(void)doSomeShit:(UIButton*)userImageButton
 {
     NSLog(@"這個按鈕目前還沒給他功能");
+    NSLog(@"%f",self.pickedImage.image.size.width);
 }
 
 -(void)cancel:(UIButton*)cacelButton
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.textView endEditing:YES];
+}
+
+-(void)cameraOrphotos:(UIButton*)functionBar
+{
+    NSLog(@"t55555");
 }
 
 /////讓textView可以隨著內容的字打的越多 高度跟著改變
@@ -111,7 +119,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,8 +148,6 @@
 
 
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -158,7 +164,7 @@
             break;
             
         case 1:
-            self.pickedImage.image = [UIImage imageNamed:@"008"];
+            self.pickedImage.image = [UIImage imageNamed:@"010"];
             [cell addSubview:self.pickedImage];
             break;
         
