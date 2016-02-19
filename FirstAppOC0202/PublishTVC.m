@@ -79,6 +79,7 @@
     [[FuntionBarView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
     [self.functionBar.cameraButton addTarget:self action:@selector(openCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.albumButton addTarget:self action:@selector(openAlbum:) forControlEvents:UIControlEventTouchUpInside];
+    [self.functionBar.publishButton addTarget:self action:@selector(publish:) forControlEvents:UIControlEventTouchUpInside];
     
     self.textView.inputAccessoryView = self.functionBar;
     
@@ -132,6 +133,21 @@
     self.pickedImage.image = nil;
 }
 
+-(void)publish:(UIButton*)functionBar
+{
+    NSLog(@"送出囉");
+    NSData *data = UIImageJPEGRepresentation(self.pickedImage.image, 0.7);
+    
+    NSString *fileName = [NSString stringWithFormat:@"img/%0.0f.jpeg",[[NSDate date] timeIntervalSince1970] ];
+    
+    [backendless.fileService upload:fileName content:data response:^(BackendlessFile *uploadFile) {
+        NSLog(@"上傳成功");
+    } error:^(Fault *fault) {
+        NSLog(@"上傳失敗");
+    }];
+
+}
+
 /////讓textView可以隨著內容的字打的越多 高度跟著改變
 - (void)textViewDidChange:(UITextView *)textView
 {
@@ -145,6 +161,7 @@
     [self.tableView endUpdates];
     
 }
+
 
 
 

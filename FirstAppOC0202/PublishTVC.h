@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FuntionBarView.h"
 
+#import "Backendless.h"
+
+
 @interface PublishTVC : UITableViewController
 <UITextViewDelegate , UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 

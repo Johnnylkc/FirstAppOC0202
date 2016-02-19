@@ -12,5 +12,6 @@
 
 @property(strong,nonatomic)UIButton *cameraButton;
 @property(strong,nonatomic)UIButton *albumButton;
+@property(strong,nonatomic)UIButton *publishButton;
 
 @end

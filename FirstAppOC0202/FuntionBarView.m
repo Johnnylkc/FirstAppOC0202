@@ -26,6 +26,13 @@
         [self.albumButton setBackgroundImage:[UIImage imageNamed:@"012"] forState:UIControlStateNormal];
         [self addSubview:self.albumButton];
         
+        self.publishButton = [[UIButton alloc] initWithFrame:CGRectMake(300, 5, 50, 30)];
+        self.publishButton.backgroundColor = [UIColor greenColor];
+        self.publishButton.layer.cornerRadius = 5;
+        self.publishButton.clipsToBounds = YES;
+        [self.publishButton setTitle:@"送出" forState:UIControlStateNormal];
+        [self addSubview:self.publishButton];
+        
     }
 
     return  self;
