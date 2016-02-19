@@ -80,6 +80,7 @@
 //    [self presentViewController:controller animated:YES completion:nil];
     PublishTVC *controller = [PublishTVC new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    //controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:nav animated:YES completion:nil];
 }
 

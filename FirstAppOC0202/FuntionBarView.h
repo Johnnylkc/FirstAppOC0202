@@ -11,5 +11,6 @@
 @interface FuntionBarView : UIView
 
 @property(strong,nonatomic)UIButton *cameraButton;
+@property(strong,nonatomic)UIButton *albumButton;
 
 @end

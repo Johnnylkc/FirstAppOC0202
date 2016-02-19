@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "FuntionBarView.h"
 
-@interface PublishTVC : UITableViewController <UITextViewDelegate>
+@interface PublishTVC : UITableViewController
+<UITextViewDelegate , UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 
 @property(strong,nonatomic)UIButton *userImageButton;
@@ -17,6 +18,8 @@
 
 @property(strong,nonatomic)UITextView *textView;
 @property(strong,nonatomic)UIImageView *pickedImage;
+
+@property(strong,nonatomic)FuntionBarView *functionBar;
 
 
 @end

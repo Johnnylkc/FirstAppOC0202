@@ -18,9 +18,13 @@
     {
         self.backgroundColor = [UIColor lightGrayColor];
         
-        self.cameraButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 35, 35)];
+        self.cameraButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 5, 25, 25)];
         [self.cameraButton setBackgroundImage:[UIImage imageNamed:@"009"] forState:UIControlStateNormal];
         [self addSubview:self.cameraButton];
+        
+        self.albumButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 5, 25, 25)];
+        [self.albumButton setBackgroundImage:[UIImage imageNamed:@"012"] forState:UIControlStateNormal];
+        [self addSubview:self.albumButton];
         
     }
 

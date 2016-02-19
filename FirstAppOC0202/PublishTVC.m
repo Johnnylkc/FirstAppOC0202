@@ -1,4 +1,3 @@
-//
 //  PublishTVC.m
 //  FirstAppOC0202
 //
@@ -10,22 +9,27 @@
 
 @interface PublishTVC ()
 
+
 @end
 
 @implementation PublishTVC
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [self allUI];
+
     
-    
+
 }
 
 -(void)allUI
 {
    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
     self.userImageButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,40, 40)];
@@ -44,6 +48,7 @@
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:self.cancelButton];
     self.navigationItem.rightBarButtonItem = rightButton;
+   
     /////////////////以上是navigation的UI
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
@@ -51,20 +56,23 @@
     //self.textView.backgroundColor = [UIColor orangeColor];
     self.textView.font = [UIFont systemFontOfSize:20];
     self.textView.scrollEnabled = NO;
+    //[self.textView setKeyboardType:UIKeyboardTypePhonePad];
     [self.textView becomeFirstResponder];
+    
     
     self.pickedImage =
     [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 400)];
     self.pickedImage.contentMode = UIViewContentModeScaleAspectFit;
-    self.pickedImage.backgroundColor = [UIColor redColor];
+    //self.pickedImage.backgroundColor = [UIColor redColor];
 
-    
-    FuntionBarView *functionBar =
-    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-100, self.tableView.frame.size.width, 55)];
-    [functionBar.cameraButton addTarget:self action:@selector(cameraOrphotos:) forControlEvents:UIControlEventTouchUpInside];
-    [self.tableView addSubview:functionBar];
-    
 
+    self.functionBar =
+    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
+    [self.functionBar.cameraButton addTarget:self action:@selector(openCamera:) forControlEvents:UIControlEventTouchUpInside];
+    [self.functionBar.albumButton addTarget:self action:@selector(openAlbum:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.textView.inputAccessoryView = self.functionBar;
+    
     
 }
 
@@ -80,9 +88,33 @@
     [self.textView endEditing:YES];
 }
 
--(void)cameraOrphotos:(UIButton*)functionBar
+-(void)openCamera:(UIButton*)functionBar
 {
-    NSLog(@"t55555");
+    NSLog(@"給我打開相機");
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.allowsEditing = YES;
+    picker.delegate = self;
+    [picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+-(void)openAlbum:(UIButton*)functionBar
+{
+    NSLog(@"給我打開相機膠卷");
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    picker.allowsEditing = YES;
+    [self presentViewController:picker animated:YES completion:nil];
+
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.pickedImage.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /////讓textView可以隨著內容的字打的越多 高度跟著改變
@@ -98,9 +130,6 @@
     [self.tableView endUpdates];
     
 }
-
-
-
 
 
 
@@ -146,15 +175,12 @@
 
 
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     UITableViewCell *cell =
     [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    
     
     
     switch (indexPath.row)
@@ -164,7 +190,7 @@
             break;
             
         case 1:
-            self.pickedImage.image = [UIImage imageNamed:@"010"];
+            //self.pickedImage.image = [UIImage imageNamed:@"010"];
             [cell addSubview:self.pickedImage];
             break;
         
