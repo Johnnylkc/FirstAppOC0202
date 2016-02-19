@@ -18,6 +18,7 @@
 
 @property(strong,nonatomic)UITextView *textView;
 @property(strong,nonatomic)UIImageView *pickedImage;
+@property(strong,nonatomic)UIButton *deleteImageButton;
 
 @property(strong,nonatomic)FuntionBarView *functionBar;
 

@@ -63,8 +63,17 @@
     self.pickedImage =
     [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 400)];
     self.pickedImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.pickedImage.userInteractionEnabled = YES;
     //self.pickedImage.backgroundColor = [UIColor redColor];
 
+    self.deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(self.pickedImage.frame.size.width-50, 10, 20, 20)];
+    [self.deleteImageButton setBackgroundImage:[UIImage imageNamed:@"013"] forState:UIControlStateNormal];
+    [self.deleteImageButton addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
+   [self.pickedImage addSubview:self.deleteImageButton];
+    
+    
+    
+    
 
     self.functionBar =
     [[FuntionBarView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
@@ -115,6 +124,12 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.pickedImage.image = image;
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)deleteImage:(UIButton*)deleteImageButton
+{
+    NSLog(@"我要刪除這張照片");
+    self.pickedImage.image = nil;
 }
 
 /////讓textView可以隨著內容的字打的越多 高度跟著改變
@@ -192,6 +207,11 @@
         case 1:
             //self.pickedImage.image = [UIImage imageNamed:@"010"];
             [cell addSubview:self.pickedImage];
+            if (self.pickedImage.image != nil)
+            {
+                [self.pickedImage addSubview:self.deleteImageButton];
+
+            }
             break;
         
         default:
