@@ -15,6 +15,7 @@
 @implementation PublishTVC
 
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -56,9 +57,6 @@
     //self.textView.backgroundColor = [UIColor orangeColor];
     self.textView.font = [UIFont systemFontOfSize:20];
     self.textView.scrollEnabled = NO;
-    //[self.textView setKeyboardType:UIKeyboardTypePhonePad];
-    [self.textView becomeFirstResponder];
-    
     
     self.pickedImage =
     [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 400)];
@@ -70,20 +68,25 @@
     [self.deleteImageButton setBackgroundImage:[UIImage imageNamed:@"013"] forState:UIControlStateNormal];
     [self.deleteImageButton addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
    [self.pickedImage addSubview:self.deleteImageButton];
-    
-    
-    
-    
+
 
     self.functionBar =
-    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
+    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-90, self.tableView.frame.size.width, 40)];
+    
     [self.functionBar.cameraButton addTarget:self action:@selector(openCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.albumButton addTarget:self action:@selector(openAlbum:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.publishButton addTarget:self action:@selector(publish:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.tableView addSubview:self.functionBar];
     self.textView.inputAccessoryView = self.functionBar;
     
     
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [self.textView becomeFirstResponder];
 }
 
 -(void)doSomeShit:(UIButton*)userImageButton
@@ -124,6 +127,7 @@
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.pickedImage.image = image;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -136,16 +140,27 @@
 -(void)publish:(UIButton*)functionBar
 {
     NSLog(@"送出囉");
-    NSData *data = UIImageJPEGRepresentation(self.pickedImage.image, 0.7);
     
-    NSString *fileName = [NSString stringWithFormat:@"img/%0.0f.jpeg",[[NSDate date] timeIntervalSince1970] ];
-    
-    [backendless.fileService upload:fileName content:data response:^(BackendlessFile *uploadFile) {
-        NSLog(@"上傳成功");
-    } error:^(Fault *fault) {
-        NSLog(@"上傳失敗");
-    }];
+//    NSData *data = UIImageJPEGRepresentation(self.pickedImage.image, 0.7);
+//    
+//    NSString *fileName = [NSString stringWithFormat:@"img/%0.0f.jpeg",[[NSDate date] timeIntervalSince1970] ];
+//    
+//    [backendless.fileService upload:fileName content:data response:^(BackendlessFile *uploadFile) {
+//        NSLog(@"上傳成功");
+//    } error:^(Fault *fault) {
+//        NSLog(@"上傳失敗");
+//    }];
 
+    NSData *data = UIImageJPEGRepresentation(self.pickedImage.image, 0.7);;
+    
+    [backendless.fileService upload:self.textView.text content:data
+                           response:^(BackendlessFile *uploadedFile) {
+                               NSLog(@"File has been uploaded. File URL is - %@", uploadedFile.fileURL);
+                           }
+                              error:^(Fault *fault) {
+                                  NSLog(@"Server reported an error: %@", fault); 
+                              }];
+    
 }
 
 /////讓textView可以隨著內容的字打的越多 高度跟著改變
@@ -159,8 +174,9 @@
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
-    
 }
+
+
 
 
 
@@ -214,6 +230,7 @@
     UITableViewCell *cell =
     [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     switch (indexPath.row)
     {
@@ -222,13 +239,8 @@
             break;
             
         case 1:
-            //self.pickedImage.image = [UIImage imageNamed:@"010"];
             [cell addSubview:self.pickedImage];
-            if (self.pickedImage.image != nil)
-            {
-                [self.pickedImage addSubview:self.deleteImageButton];
-
-            }
+     
             break;
         
         default:
