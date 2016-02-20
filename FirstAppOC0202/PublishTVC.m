@@ -22,6 +22,12 @@
     
     [self allUI];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+
+    
 }
 
 -(void)allUI
@@ -52,17 +58,13 @@
     
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
     self.textView.delegate = self;
-    //self.textView.backgroundColor = [UIColor orangeColor];
     self.textView.font = [UIFont systemFontOfSize:20];
     self.textView.scrollEnabled = NO;
-    self.textView.inputAccessoryView = self.functionBar;
-
     
     self.pickedImage =
     [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 400)];
     self.pickedImage.contentMode = UIViewContentModeScaleAspectFit;
     self.pickedImage.userInteractionEnabled = YES;
-    //self.pickedImage.backgroundColor = [UIColor redColor];
 
     self.deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(self.pickedImage.frame.size.width-50, 10, 20, 20)];
     [self.deleteImageButton setBackgroundImage:[UIImage imageNamed:@"013"] forState:UIControlStateNormal];
@@ -71,13 +73,13 @@
 
 
     self.functionBar =
-    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height-90, self.tableView.frame.size.width, 40)];
+    [[FuntionBarView alloc] initWithFrame:CGRectMake(0, self.tableView.frame.size.height -20, self.tableView.frame.size.width, 40)];
     
     [self.functionBar.cameraButton addTarget:self action:@selector(openCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.albumButton addTarget:self action:@selector(openAlbum:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.publishButton addTarget:self action:@selector(publish:) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView addSubview:self.functionBar];
-    
+
     
     
 }
@@ -173,6 +175,60 @@
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
 }
+
+
+
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+    
+    self.textView.inputAccessoryView.frame = CGRectMake(0, self.tableView.frame.size.width, 300, 40);
+    
+    return YES;
+}
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    self.functionBar.transform = CGAffineTransformMakeTranslation(0,scrollView.contentOffset.y);
+}
+
+
+
+- (void)keyboardWillShow:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    NSNumber *durationValue = info[UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curveValue = info[UIKeyboardAnimationCurveUserInfoKey];
+    NSValue *endFrame = info[UIKeyboardFrameEndUserInfoKey];
+    
+    [UIView animateWithDuration:durationValue.doubleValue delay:0 options:(curveValue.intValue << 16) animations:^{
+        
+        self.functionBar.frame = CGRectMake(0,[endFrame CGRectValue].origin.y - self.functionBar.bounds.size.height,self.functionBar.bounds.size.width,self.functionBar.bounds.size.height);
+        
+    }
+     
+        completion:nil];
+}
+
+
+- (void)keyboardWillHide:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    NSNumber *durationValue = info[UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curveValue = info[UIKeyboardAnimationCurveUserInfoKey];
+    
+    [UIView animateWithDuration:durationValue.doubleValue delay:0 options:(curveValue.intValue << 16) animations:^{
+    
+        self.functionBar.frame = CGRectMake(0,self.view.bounds.size.height - self.functionBar.bounds.size.height,self.functionBar.bounds.size.width,self.functionBar.bounds.size.height);
+        
+    }
+     
+        completion:nil];
+}
+
+
+
 
 
 

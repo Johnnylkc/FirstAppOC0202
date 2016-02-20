@@ -127,12 +127,9 @@
     cell.countryLabel.frame = CGRectMake(70, 40, 200 , 20);
     cell.countryLabel.font = [UIFont systemFontOfSize:15];
 
-    cell.postedImageButton.frame = CGRectMake(5, 70, self.view.frame.size.width-10, 200);
+    cell.postedImageButton.frame = CGRectMake(0, 70, self.view.frame.size.width-10, 200);
     [cell.postedImageButton addTarget:self action:@selector(viewPhoto:) forControlEvents:UIControlEventTouchUpInside];
 
-
-    
-    
     
     
     cell.userHeadImage.image = [UIImage imageNamed:@"005"];
