@@ -117,7 +117,7 @@
     cell.backgroundColor = [UIColor clearColor];
     
     /////all frame
-    cell.basicView.frame = CGRectMake(0, 0, self.view.frame.size.width, 340);
+    cell.basicView.frame = CGRectMake(5, 0, self.view.frame.size.width-10, 340);
     
     cell.userHeadImage.frame = CGRectMake(10, 10, 50, 50);
    
@@ -127,7 +127,7 @@
     cell.countryLabel.frame = CGRectMake(70, 40, 200 , 20);
     cell.countryLabel.font = [UIFont systemFontOfSize:15];
 
-    cell.postedImageButton.frame = CGRectMake(0, 70, self.view.frame.size.width, 200);
+    cell.postedImageButton.frame = CGRectMake(5, 70, self.view.frame.size.width-10, 200);
     [cell.postedImageButton addTarget:self action:@selector(viewPhoto:) forControlEvents:UIControlEventTouchUpInside];
 
 

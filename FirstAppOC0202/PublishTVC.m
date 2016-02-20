@@ -22,8 +22,6 @@
     
     [self allUI];
 
-    
-
 }
 
 -(void)allUI
@@ -57,6 +55,8 @@
     //self.textView.backgroundColor = [UIColor orangeColor];
     self.textView.font = [UIFont systemFontOfSize:20];
     self.textView.scrollEnabled = NO;
+    self.textView.inputAccessoryView = self.functionBar;
+
     
     self.pickedImage =
     [[UIImageView alloc] initWithFrame:CGRectMake(10, 0,self.tableView.frame.size.width-20 , 400)];
@@ -77,7 +77,6 @@
     [self.functionBar.albumButton addTarget:self action:@selector(openAlbum:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.publishButton addTarget:self action:@selector(publish:) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView addSubview:self.functionBar];
-    self.textView.inputAccessoryView = self.functionBar;
     
     
     
@@ -86,7 +85,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    [self.textView becomeFirstResponder];
 }
 
 -(void)doSomeShit:(UIButton*)userImageButton
