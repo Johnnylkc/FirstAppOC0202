@@ -21,12 +21,10 @@
     [super viewDidLoad];
     
     [self allUI];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-
-
     
 }
 
@@ -66,10 +64,11 @@
     self.pickedImage.contentMode = UIViewContentModeScaleAspectFit;
     self.pickedImage.userInteractionEnabled = YES;
 
-    self.deleteImageButton = [[UIButton alloc] initWithFrame:CGRectMake(self.pickedImage.frame.size.width-50, 10, 20, 20)];
+    self.deleteImageButton =
+    [[UIButton alloc] initWithFrame:CGRectMake(self.pickedImage.frame.size.width-50, 10, 20, 20)];
     [self.deleteImageButton setBackgroundImage:[UIImage imageNamed:@"013"] forState:UIControlStateNormal];
     [self.deleteImageButton addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
-   [self.pickedImage addSubview:self.deleteImageButton];
+    [self.pickedImage addSubview:self.deleteImageButton];
 
 
     self.functionBar =
@@ -78,6 +77,7 @@
     [self.functionBar.cameraButton addTarget:self action:@selector(openCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.albumButton addTarget:self action:@selector(openAlbum:) forControlEvents:UIControlEventTouchUpInside];
     [self.functionBar.publishButton addTarget:self action:@selector(publish:) forControlEvents:UIControlEventTouchUpInside];
+   
     [self.tableView addSubview:self.functionBar];
 
     
@@ -93,6 +93,7 @@
 {
     NSLog(@"這個按鈕目前還沒給他功能");
     NSLog(@"%f",self.pickedImage.image.size.width);
+    [self.textView endEditing:YES];
 }
 
 -(void)cancel:(UIButton*)cacelButton
@@ -177,57 +178,40 @@
 }
 
 
-
--(BOOL)textViewShouldEndEditing:(UITextView *)textView
-{
-    
-    self.textView.inputAccessoryView.frame = CGRectMake(0, self.tableView.frame.size.width, 300, 40);
-    
-    return YES;
-}
-
-
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
     self.functionBar.transform = CGAffineTransformMakeTranslation(0,scrollView.contentOffset.y);
 }
 
 
-
-- (void)keyboardWillShow:(NSNotification*)aNotification
+- (void)keyboardWillShow:(id)keyboardDidShow
 {
-    NSDictionary* info = [aNotification userInfo];
-    NSNumber *durationValue = info[UIKeyboardAnimationDurationUserInfoKey];
-    NSNumber *curveValue = info[UIKeyboardAnimationCurveUserInfoKey];
-    NSValue *endFrame = info[UIKeyboardFrameEndUserInfoKey];
+    [UIView beginAnimations:nil context:NULL];
     
-    [UIView animateWithDuration:durationValue.doubleValue delay:0 options:(curveValue.intValue << 16) animations:^{
-        
-        self.functionBar.frame = CGRectMake(0,[endFrame CGRectValue].origin.y - self.functionBar.bounds.size.height,self.functionBar.bounds.size.width,self.functionBar.bounds.size.height);
-        
-    }
-     
-        completion:nil];
+    NSDictionary *userInfo = [keyboardDidShow userInfo];
+    [UIView setAnimationDuration:[userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+    [UIView setAnimationCurve:[userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+   // [self.view layoutIfNeeded];
+    
+    self.functionBar.frame = CGRectMake(0, 300, self.tableView.frame.size.width, 40);
+    
+    [UIView commitAnimations];
 }
 
-
-- (void)keyboardWillHide:(NSNotification*)aNotification
+- (void)keyboardWillHide:(id)keyboardDidHide
 {
-    NSDictionary* info = [aNotification userInfo];
-    NSNumber *durationValue = info[UIKeyboardAnimationDurationUserInfoKey];
-    NSNumber *curveValue = info[UIKeyboardAnimationCurveUserInfoKey];
+    [UIView beginAnimations:nil context:NULL];
     
-    [UIView animateWithDuration:durationValue.doubleValue delay:0 options:(curveValue.intValue << 16) animations:^{
+    NSDictionary *userInfo = [keyboardDidHide userInfo];
+    [UIView setAnimationDuration:[userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+    [UIView setAnimationCurve:[userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+   // [self.view layoutIfNeeded];
     
-        self.functionBar.frame = CGRectMake(0,self.view.bounds.size.height - self.functionBar.bounds.size.height,self.functionBar.bounds.size.width,self.functionBar.bounds.size.height);
-        
-    }
-     
-        completion:nil];
+    self.functionBar.frame = CGRectMake(0, self.tableView.frame.size.height-98, self.tableView.frame.size.width, 40);
+
+    
+    [UIView commitAnimations];
 }
-
-
 
 
 
